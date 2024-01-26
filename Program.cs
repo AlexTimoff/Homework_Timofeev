@@ -59,3 +59,50 @@ int AckermannFunction(int x, int y)
 
 Console.WriteLine($"A({m},{n}) = {AckermannFunction(m,n)}");
 
+// Задача 3: Задайте произвольный массив. Выведете
+// его элементы, начиная с конца. Использовать
+// рекурсию, не использовать циклы.
+
+
+int[] matrix = CreateArray();
+GetArray(matrix);
+PrintArray(matrix); //выводим созданный массив для наглядности
+System.Console.WriteLine();
+int index = 0;
+PrintReverseArray(matrix, index); //выводим массив в обратном порядке
+
+
+int[] CreateArray()
+{
+    System.Console.WriteLine("Задайте длину массива");
+    int sizeArray = Convert.ToInt32(Console.ReadLine());
+    int[] array = new int[sizeArray];
+    return array;
+}
+
+void GetArray(int[] Arr)
+{
+    for (int i = 0; i < Arr.Length; i++)
+    {
+        Arr[i] = new Random().Next(1, 100);
+    }
+}
+
+void PrintArray(int[] newArray)
+{
+    for (int i = 0; i < newArray.Length; i++)
+    {
+        System.Console.Write(newArray[i] + "\t");
+    }
+}
+
+void PrintReverseArray(int[] array2, int i)
+{
+    if (i == array2.Length)
+    {
+        return;
+    }
+    System.Console.Write(array2[array2.Length - 1 - i] + "\t");
+
+    PrintReverseArray(array2, ++i);
+}
